@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Keyboard from '.';
 
-
 const KEYS = [
   'a',
   'b',
