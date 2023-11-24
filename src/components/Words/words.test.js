@@ -17,7 +17,7 @@ test("Display the right letters of the guess word", () => {
   
     const { getByTestId } = render(<Words word={selectedWord} />);
   
-    const displayedWord = getByTestId(/hangman-word/i).textContent;
+    const displayedWord = screen.getByTestId(/hangman-word/i).textContent;
   
     expect(displayedWord).toBe(selectedWord);
   });
@@ -27,7 +27,7 @@ test("Display the right letters of the guess word", () => {
     
     const { getAllByTestId } = render(<Words word={selectedWord} />);
   
-    const displayedWord = getAllByTestId("letter"); 
+    const displayedWord = screen.getAllByTestId("letter"); 
   
     expect(displayedWord.length).toBe(selectedWord.length); 
   });

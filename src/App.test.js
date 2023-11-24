@@ -13,7 +13,7 @@ test('start button is working', () => {
 test('clicking "start game" button updates the random word state', () => {
   const {getByText}= render(<App />)
 
-  const startButton = getByText('Start game');
+  const startButton = screen.getByText('Start game');
 
   fireEvent.click(startButton);
 
@@ -26,7 +26,7 @@ test('clicking "start game" button updates the random word state', () => {
 test('word component shows a currect word from the array', () => {
   const {getByText}= render(<App />)
   
-  const startButton = getByText('Start game');
+  const startButton = screen.getByText('Start game');
 
   fireEvent.click(startButton);
 
@@ -43,14 +43,13 @@ test('word component shows a currect word from the array', () => {
 });
 
 test('currect amount of letters', () => {
-const {getByText}= render(<App />)
+  const {getByText}= render(<App />)
   
-const startButton = getByText('Start game');
+  const startButton = screen.getByText('Start game');
 
-fireEvent.click(startButton);
-
-const word = screen.getByTestId("letters");
-
-expect(word.textContent).toBe(currectWord);
+  fireEvent.click(startButton);
+  
+  const word = screen.getAllByTestId("letter");
+  expect(word.length).toBe(5);
 
 });
