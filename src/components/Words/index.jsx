@@ -1,4 +1,4 @@
-function Words({ word }) {
+function Words ({ word }) {
   return (
     <div data-testid={`hangman-word ${word}`}>
       {word && typeof word === 'string' && word.split('').map((letter, index) => (

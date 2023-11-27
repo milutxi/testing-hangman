@@ -11,7 +11,7 @@ test('start button is working', () => {
 });
 
 test('clicking "start game" button updates the random word state', () => {
-  const {getByText}= render(<App />)
+  render(<App />)
 
   const startButton = screen.getByText('Start game');
 
@@ -24,7 +24,7 @@ test('clicking "start game" button updates the random word state', () => {
 });
 
 test('word component shows a currect word from the array', () => {
-  const {getByText}= render(<App />)
+  render(<App />)
   
   const startButton = screen.getByText('Start game');
 
@@ -36,20 +36,42 @@ test('word component shows a currect word from the array', () => {
   // console.log(currectWord.length)
   
   expect(word).toBeInTheDocument();
-  // console.log(word.textContent.length)
+  //console.log(word.textContent.length)
   expect(word.textContent.length).toBe(5);
 
   expect(word.textContent).toBe(currectWord);
 });
 
 test('currect amount of letters', () => {
-  const {getByText}= render(<App />)
+  render(<App />)
   
   const startButton = screen.getByText('Start game');
 
   fireEvent.click(startButton);
   
   const word = screen.getAllByTestId("letter");
+
   expect(word.length).toBe(5);
+ 
 
 });
+
+
+test ('the paragraph renders', ()=> {
+  render (<App />)
+  const info = screen.queryByText(/enjoy/i);
+  expect(info).toBeInTheDocument()
+})
+
+test('Show the correct word', () => {
+  //const selectedWord = "table";
+  const selectletters = ["t","a","b","l","e"]
+  
+  render(<App word={selectedWord} />);
+
+ const word = screen.getAllByAltText("letter");
+
+  expect(word).toBeEqual
+
+
+})

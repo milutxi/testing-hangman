@@ -7,8 +7,6 @@ test ("The page title is render", () => {
     const pageTitle = screen.getByRole("heading", {level:1});
 
     expect(pageTitle).toBeInTheDocument();
-    
-
 })
 
 test ("the subtitle are rendered", () => {
@@ -17,5 +15,4 @@ test ("the subtitle are rendered", () => {
     const subTitle = screen.getByRole("heading", {level:2});
     
     expect(subTitle).toBeInTheDocument();
-
 })

@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Words from './components/Words'; 
 import './App.css';
+import Hangman from './components/Hangman';
+import Keyboard from './components/Keyboard';
+import Footer from './components/Footer';
+
 
 const wordToGuess = [
   "cheer", "table", "beach", "green", "drive", "hello", "admit", "earth",
@@ -19,12 +23,21 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header 
+        title={"Hola"}
+        subtitle={"It is us"}
+        />
+      <div>
+        <p>We hope you enjoy this game, press the button to start it.</p>
+      </div>
       <button onClick={getRandomWord}>Start game</button>
       {randomWord && <Words word={randomWord} />} 
+
+      <Footer />
     </div>
   );
 }
+
 
 export default App;
 
