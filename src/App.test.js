@@ -63,15 +63,26 @@ test ('the paragraph renders', ()=> {
   expect(info).toBeInTheDocument()
 })
 
-test('Show the correct word', () => {
-  //const selectedWord = "table";
-  const selectletters = ["t","a","b","l","e"]
+//to make the following test the array of words will be only one word
+test('Show the correct amount of spaces to write the word in', () => {
   
-  render(<App word={selectedWord} />);
+  const selectLetters = ["t","a","b","l","e"]
 
- const word = screen.getAllByAltText("letter");
+ // Act
+ render(<App />);
+  const startButton = screen.getByText('Start game');
+  let displayedWord = screen.queryByTestId(/hangman-word/i);
 
-  expect(word).toBeEqual
+  expect(displayedWord).not.toBeInTheDocument();
+   
+  fireEvent.click(startButton);
+  displayedWord = screen.queryByTestId(/hangman-word/i);
+  expect(displayedWord).toBeInTheDocument();
+  
 
+ // Get all elements with alt text "letter"
+ const wordElements = screen.getAllByTestId("letter");
 
-})
+ // Assert
+ expect(wordElements).toHaveLength(selectLetters.length);
+});

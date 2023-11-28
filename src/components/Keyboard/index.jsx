@@ -27,21 +27,17 @@ const KEYS = [
     'y',
     'z',
   ];
-  const Keyboard = ({
-    activeLetter,
-    inactiveLetter,
-    addGuessLetter,
-    disabled = false,
+  const Keyboard = ({ addLetter, letterList
+   
   }) => {
     return (
       <div>
+        {console.log({letterList})}
         {KEYS.map((key) => {
-          const isActive = activeLetter.includes(key);
-          const isInactive = inactiveLetter.includes(key);
           return (
-            <button
-              onClick={() => addGuessLetter(key)}
-              disabled={isInactive || isActive || disabled}
+            <button onClick = { ()=> addLetter(key)}
+              disabled = {letterList.includes(key)}
+
               key={key}
             >
               {key}
